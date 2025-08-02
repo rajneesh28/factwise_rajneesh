@@ -1,0 +1,24 @@
+============================================================
+BOARD EXPORT: Project Alpha
+============================================================
+Team: Development Team
+Description: Main project board for development tasks
+Status: OPEN
+Created: 2025-08-02T19:17:04.624008
+
+TASKS:
+----------------------------------------
+1. Setup Project Architecture
+   Status: IN_PROGRESS
+   Assigned to: rajneesh
+   Description: Design and implement the core system architecture
+   Created: 2025-08-02T19:17:11.298146
+
+2. Implement API Endpoints
+   Status: OPEN
+   Assigned to: rahul
+   Description: Create REST API endpoints for user management
+   Created: 2025-08-02T19:17:18.217364
+
+============================================================
+Export generated on: 2025-08-02T19:17:31.332903
