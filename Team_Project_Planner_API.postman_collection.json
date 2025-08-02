@@ -1,0 +1,261 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-abcd-123456789012",
+		"name": "Team Project Planner API - Sample Workflow",
+		"description": "Sample workflow for Team Project Planner API with Rajneesh and Rahul",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12345678"
+	},
+	"item": [
+		{
+			"name": "1. Create First User (Rajneesh)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"rajneesh\",\n  \"display_name\": \"Rajneesh\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/users",
+					"host": ["{{baseUrl}}"],
+					"path": ["users"]
+				},
+				"description": "Step 1: Create the first user (Rajneesh) who will be team admin"
+			},
+			"response": []
+		},
+		{
+			"name": "2. Create Second User (Rahul)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"rahul\",\n  \"display_name\": \"Rahul\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/users",
+					"host": ["{{baseUrl}}"],
+					"path": ["users"]
+				},
+				"description": "Step 2: Create the second user (Rahul) who will be a team member"
+			},
+			"response": []
+		},
+		{
+			"name": "3. Create Team",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Development Team\",\n  \"description\": \"Main development team for the project\",\n  \"admin\": \"1\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/teams",
+					"host": ["{{baseUrl}}"],
+					"path": ["teams"]
+				},
+				"description": "Step 3: Create a team with Rajneesh as admin (use user ID from step 1)"
+			},
+			"response": []
+		},
+		{
+			"name": "4. Add Rahul to Team",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"users\": [\"2\"]\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/teams/1/users",
+					"host": ["{{baseUrl}}"],
+					"path": ["teams", "1", "users"]
+				},
+				"description": "Step 4: Add Rahul to the team (use team ID from step 3 and Rahul's user ID from step 2)"
+			},
+			"response": []
+		},
+		{
+			"name": "5. Create Project Board",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Project Alpha\",\n  \"description\": \"Main project board for development tasks\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/teams/1/boards",
+					"host": ["{{baseUrl}}"],
+					"path": ["teams", "1", "boards"]
+				},
+				"description": "Step 5: Create a project board for the team"
+			},
+			"response": []
+		},
+		{
+			"name": "6. Add Task for Rajneesh",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Setup Project Architecture\",\n  \"description\": \"Design and implement the core system architecture\",\n  \"user_id\": \"1\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/boards/1/tasks",
+					"host": ["{{baseUrl}}"],
+					"path": ["boards", "1", "tasks"]
+				},
+				"description": "Step 6: Add a task assigned to Rajneesh (use board ID from step 5)"
+			},
+			"response": []
+		},
+		{
+			"name": "7. Add Task for Rahul",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Implement API Endpoints\",\n  \"description\": \"Create REST API endpoints for user management\",\n  \"user_id\": \"2\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/boards/1/tasks",
+					"host": ["{{baseUrl}}"],
+					"path": ["boards", "1", "tasks"]
+				},
+				"description": "Step 7: Add a task assigned to Rahul"
+			},
+			"response": []
+		},
+		{
+			"name": "8. Update Rajneesh's Task Status",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"status\": \"IN_PROGRESS\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/tasks/1/status",
+					"host": ["{{baseUrl}}"],
+					"path": ["tasks", "1", "status"]
+				},
+				"description": "Step 8: Update Rajneesh's task status to IN_PROGRESS"
+			},
+			"response": []
+		},
+		{
+			"name": "9. Export Board",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/boards/1/export",
+					"host": ["{{baseUrl}}"],
+					"path": ["boards", "1", "export"]
+				},
+				"description": "Step 9: Export the board to see a formatted report"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "userId",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "userId2",
+			"value": "2",
+			"type": "string"
+		},
+		{
+			"key": "teamId",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "boardId",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "taskId",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}
